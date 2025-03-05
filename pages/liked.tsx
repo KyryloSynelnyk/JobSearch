@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { FaStar, FaRegStar } from "react-icons/fa";
+import { FaStar, FaRegStar, FaArrowLeft  } from "react-icons/fa";
 import { useRouter } from "next/router";
 
 const LikedPage = () => {

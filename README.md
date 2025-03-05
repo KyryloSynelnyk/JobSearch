@@ -32,13 +32,13 @@ Before running this project, make sure you have the following installed:
 -   **Node.js** (v14.x or higher)
 -   **npm** or **yarn**
 
-### Install Dependencies
+### Install Dependencies (Important!)
 
 Run the following commands to install the project dependencies:
 
 `npm install` or `yarn install` 
 
-### Run the Application
+### Run the Application  (Important!)
 
 To start the development server:
 
@@ -46,13 +46,13 @@ To start the development server:
 
 The app will be available at `http://localhost:3000`.
 
-### Build for Production
+### Build for Production (Optional)
 
 To build the application for production:
 
 `npm run build` or `yarn build` 
 
-### Linting and Formatting
+### Linting and Formatting (Optional)
 
 This project uses **Prettier** for code formatting. You can run the following command to format the code:
 

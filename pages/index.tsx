@@ -13,6 +13,7 @@ const Home = () => {
   const [debouncedSearchQuery, setDebouncedSearchQuery] = useState<string>(searchQuery);
   const router = useRouter();
   const [profileExists, setProfileExists] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -47,9 +48,16 @@ const Home = () => {
         } else {
           setJobs([]);
         }
-      } catch (error) {
-        console.error("Error fetching jobs:", error);
-        setJobs([]);
+      } catch (err: any) {
+        if (axios.isAxiosError(err)) {
+          if (err.response?.status === 429) {
+            setError(err.response?.data?.message);
+          } else {
+            setError(`Error: ${err.response?.status || "Unknown error"}`);
+          }
+        } else {
+          setError("Unexpected error occurred.");
+        }
       } finally {
         setLoading(false);
       }
@@ -111,6 +119,7 @@ const Home = () => {
 
   return (
     <div className="container mx-auto p-4">
+     {error && <div style={{ color: "red", fontWeight: "bold", marginBottom: "10px" }}>{error}</div>}
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-semibold">Job Listings</h1>
         <div className="flex items-center space-x-4">
